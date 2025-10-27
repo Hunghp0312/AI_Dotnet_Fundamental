@@ -1,0 +1,43 @@
+@Excercise5_HostAddress = http://localhost:5193
+
+# Test the root endpoint
+GET {{Excercise5_HostAddress}}/
+Accept: application/json
+
+###
+
+# Test MNIST prediction (requires an image file)
+POST {{Excercise5_HostAddress}}/api/mnist/predict
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="imageFile"; filename="digit.png"
+Content-Type: image/png
+
+< ./path/to/your/digit-image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# Test MNIST prediction with explanation (requires an image file)
+POST {{Excercise5_HostAddress}}/api/mnist/predict-explain
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="imageFile"; filename="digit.png"
+Content-Type: image/png
+
+< ./path/to/your/digit-image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# Test quiz generation
+POST {{Excercise5_HostAddress}}/api/mnist/quiz
+Content-Type: application/json
+
+{
+  "recentMistakes": [3, 8, 5, 9]
+}
+
+###
