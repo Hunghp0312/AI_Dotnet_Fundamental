@@ -1,0 +1,3 @@
+Hãy tóm tắt đoạn văn sau thành 3 gạch đầu dòng ngắn gọn, bằng tiếng Việt:
+
+{{$input}}
